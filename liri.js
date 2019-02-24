@@ -101,10 +101,26 @@ function spotifyThis(){
 }
 
 function movieThis(){
+    if (!userInput){
+        userInput = "Mr. Nobody";
+    }
     axios
         .get("http://www.omdbapi.com/?t=" + userInput + "&y=&plot=short&apikey=trilogy")
         .then(function(response){
-            console.log(response)
+            var response = response.data;
+            console.log("\nSearching for " + userInput +"...\n")
+
+            console.log("Title: " + response.Title)
+            console.log("Year: " + response.Year)
+            console.log("IMDB Rating: " + response.imdbRating)
+            console.log("RT Rating: " + response.Ratings[1].Value)
+            console.log("Produced in: " + response.Country)
+            console.log("Language: " + response.Language)
+            console.log("Plot: " + response.Plot)
+            console.log("Starring: " + response.Actors + "\n")
+            
+            
         })
+    
     
 }
