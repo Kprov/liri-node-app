@@ -124,3 +124,18 @@ function movieThis(){
     
     
 }
+
+function doThis(){
+
+    fs.readFile("random.txt", "utf8", function(error, data){
+        if(error){
+           return console.log(error);
+        }
+        var scriptArray = data.split(",");
+
+           query = scriptArray[0];
+           userInput = scriptArray[1];
+
+           userSearch(query, userInput);
+    })
+}
